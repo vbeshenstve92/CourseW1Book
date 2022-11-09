@@ -1,7 +1,8 @@
 public class Main {
 
+    public static int Counter;
     static Employee employees[] = new Employee[10];  // массив на 10 сотрудников
-    static int idCounter = 0;   // счётчик номера, счётчик сотрудниеов
+
 
     public static void main(String[] args) {
 //тестовые данные и проверка
@@ -37,12 +38,12 @@ public class Main {
     } // конец метода майн
 
     public static void listEmployee() {
-        if (idCounter == 0) {
+        if (Counter == 0) {
             System.out.println("список сотрудников пуст");
             //throw new IllegalArgumentException("список сотрудников пуст. ");
             return;
         } else {
-            for (int i = 0; i < idCounter; i++) {
+            for (int i = 0; i < Counter; i++) {
                 System.out.println(employees[i]  + "$");
             }
 
@@ -51,12 +52,12 @@ public class Main {
     }
 
     public static void listEmployeeFullName() {
-        if (idCounter == 0) {
+        if (Counter == 0) {
             System.out.println("список сотрудников пуст");
             throw new IllegalArgumentException("список сотрудников пуст. ");
             //return;
         } else {
-            for (int i = 0; i < idCounter; i++) {
+            for (int i = 0; i < Counter; i++) {
                 System.out.println(employees[i].toStringFullName() );
             }
 
@@ -66,21 +67,21 @@ public class Main {
 
     public static double monthlySalary() {
         double monthlySalary = 0;
-        for (int i = 0; i < idCounter; i++) {
+        for (int i = 0; i < Counter; i++) {
             monthlySalary = monthlySalary + employees[i].getSalary();
         }
         return monthlySalary;
     }
 
     public static int employeesMin() {
-        if (idCounter == 0) {
+        if (Counter == 0) {
             System.out.println("список сотрудников пуст.");
             throw new IllegalArgumentException("список сотрудников пуст. ");
             //return 0;
         }
-        double summaMin = employees[idCounter - 1].getSalary();
+        double summaMin = employees[Counter - 1].getSalary();
         int employeesMin = 0;
-        for (int i = 0; i < idCounter; i++) {
+        for (int i = 0; i < Counter; i++) {
             if (employees[i].getSalary() < summaMin) {
                 summaMin = employees[i].getSalary();
                 employeesMin = i;
@@ -91,14 +92,14 @@ public class Main {
 
 
     public static int employeesMax() {
-        if (idCounter == 0) {
+        if (Counter == 0) {
             System.out.println("список сотрудников пуст.");
             throw new IllegalArgumentException("список сотрудников пуст. ");
             //return 0;
         }
-        double summaMax = employees[idCounter - 1].getSalary();
-        int employeesMax = idCounter - 1;
-        for (int i = 0; i < idCounter; i++) {
+        double summaMax = employees[Counter - 1].getSalary();
+        int employeesMax = Counter - 1;
+        for (int i = 0; i < Counter; i++) {
             if (employees[i].getSalary() > summaMax) {
                 summaMax = employees[i].getSalary();
                 employeesMax = i;
@@ -108,12 +109,11 @@ public class Main {
     }
 
     public static double salaryAverage() {
-        if (idCounter == 0) {
+        if (Counter == 0) {
             System.out.println("список сотрудников пуст.");
-            throw new IllegalArgumentException("список сотрудников пуст. средняя зарплата отсутствует.");
             //return 0;
         }
-        return monthlySalary() / idCounter;
+        return monthlySalary() / Counter;
 
 
     }

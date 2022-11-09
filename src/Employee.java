@@ -1,6 +1,9 @@
+import org.w3c.dom.css.Counter;
+
 import java.util.Objects;
 
 public class Employee {
+    private int Counter = 0;
     private String surname;         // фамилия
     private String name;            // имя
     private String patronymic;      // отчество
@@ -15,8 +18,8 @@ public class Employee {
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
-        this.id = Main.idCounter;
-        Main.idCounter++;
+        this.id = Counter;
+        Counter++;
     }
 
     public String getSurname() {
@@ -81,6 +84,7 @@ public class Employee {
     public String toStringFullName() {
         return surname + ' ' + name + ' ' + patronymic + ' ';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
